@@ -1,0 +1,68 @@
+/* Sidebar and tabs styling for the Model Card app */
+
+/* Sidebar sizing */
+[data-testid="stSidebar"][aria-expanded="true"] {
+  width: clamp(260px, 26vw, 500px) !important;
+  min-width: 260px !important;
+}
+[data-testid="stSidebar"][aria-expanded="false"] {
+  width: 0 !important;
+  min-width: 0 !important;
+}
+
+/* Buttons in the sidebar */
+[data-testid="stSidebar"] .stButton > button,
+[data-testid="stSidebar"] [data-testid="baseButton-primary"],
+[data-testid="stSidebar"] [data-testid="baseButton-secondary"] {
+  width: 100% !important;
+  text-align: left !important;
+  padding: 0.6rem 1rem !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  margin-bottom: 10px !important;
+  box-shadow: none !important;
+}
+[data-testid="stSidebar"] .stButton > button:hover,
+[data-testid="stSidebar"] [data-testid="baseButton-primary"]:hover,
+[data-testid="stSidebar"] [data-testid="baseButton-secondary"]:hover {
+  background: #e0f0ff !important;
+}
+
+/* Responsive tweak */
+@media (max-width: 1024px) {
+  [data-testid="stSidebar"][aria-expanded="true"] {
+    width: 260px !important;
+  }
+}
+
+/* Tabs look & feel */
+.stTabs [role="tabList"] {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 4px 0;
+  gap: 0.75rem;
+}
+.stTabs [role="tab"] {
+  background: #fff !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 6px 8px;
+  margin: 0;
+  color: #374151;
+}
+.stTabs [role="tab"]:hover {
+  background: #fff !important;
+  color: #111827;
+}
+.stTabs [role="tab"][aria-selected="true"] {
+  background: #fff !important;
+  color: #111827;
+  border-bottom: 2px solid #ef4444;
+}
+.stTabs [role="tab"]:focus {
+  outline: none;
+  box-shadow: none;
+}
