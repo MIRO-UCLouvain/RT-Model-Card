@@ -52,12 +52,12 @@ Documentation = "https://<TU_ORG>.github.io/rt-modelcard-writing-tool/"
 Source = "https://github.com/<TU_ORG>/rt-modelcard-writing-tool"
 Issues = "https://github.com/<TU_ORG>/rt-modelcard-writing-tool/issues"
 
-
 [project.scripts]
 rt-modelcards = "app.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]   # usa layout src/ (cuando muevas el paquete)
+where = ["."]
+include = ["app*"] 
 
 [tool.setuptools.package-data]
 "app.core.templates.md" = ["*.md.j2"]
