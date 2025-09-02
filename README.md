@@ -1,4 +1,4 @@
-# Radio Therapy Model Card Writing Tool
+# RadioTherapy Model Card Writing Tool
 
 [![Website](https://img.shields.io/website?up_message=online&down_message=offline&url=https%3A%2F%2Frt-modelcard.streamlit.app)](https://rt-modelcard.streamlit.app)
 [![GitHub Stars](https://img.shields.io/github/stars/MIRO-UCLouvain/RT-Model-Card?style=social)](https://github.com/MIRO-UCLouvain/RT-Model-Card/stargazers)
@@ -8,13 +8,13 @@
 [![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-2ea44f)](https://github.com/MIRO-UCLouvain/RT-Model-Card/blob/main/CODE_OF_CONDUCT.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15336016.svg)](https://doi.org/10.5281/zenodo.15336016)
 
-**RT-Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
+**RadioTherapy Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
 
 It is designed for use by professionals in both research and clinical settings, supporting reproducibility, accountability, and clear communication.  
 
 While the model card structure includes items relevant to current regulatory expectations, it is **not a substitute for compliance** with frameworks such as the EU Medical Device Regulation (MDR) or equivalent standards.  
 
-This project is open-source and welcomes contributions from the community to evolve the tool in line with emerging best practices in Radio Therapy AI.
+This project is open-source and welcomes contributions from the community to evolve the tool in line with emerging best practices in RadioTherapy AI.
 
 
 ## Table of Contents
@@ -31,15 +31,25 @@ This project is open-source and welcomes contributions from the community to evo
 
 ## Features
 
-
+- **Open Access**: All content is freely accessible to promote transparency and collaboration.  
+- **Standardized Structure**: Model cards follow a consistent 6-section format, making them easy to compare and interpret.  
+- **Full Pipeline Transparency**: Provides details on the entire workflow, including pre-processing, learning architecture, and post-processing steps.  
+- **Task-Specific Adaptability**: When creating a new model card, users select from four tasks (Segmentation, Dose prediction, Image-to-image translation, or Other). Based on the chosen task, the card dynamically displays the relevant task-specific fields to be filled in.   
+- **Versioning Support**: Built-in fields allow tracking of updates to both the model and its documentation.  
+- **Evaluation & Commissioning**: Supports multiple evaluation forms for different datasets or clinical institutions, with clear distinction between research evaluation and clinical commissioning.  
+- **Supporting Materials Integration**: Attach or reference figures, tables, and appendices without cluttering the main document.  
+- **Digital Prototype Tool**: Online platform that guides users with recommendations, interactive fields, and structured workflows.  
+- **Flexible Export Options**: Download model cards in multiple formats (.json, .pdf, .md, .zip) for sharing and archival purposes.  
+- **Progress Tracking**: Built-in warning system highlights required fields that are missing or incomplete.  
+- **Community-Driven Development**: Encourages feedback, edits, and contributions from the Radiation Therapy and AI community.  
+- **Regulatory Awareness**: Aligned with regulatory principles (e.g., EU MDR), while clarifying it does not replace official requirements.  
 
 ## Contributing
 
-We welcome contributions from the community to help us maintain and expand the Radiotherapy Model Card Writing Tool. Whether you're a clinician, researcher, industry professional, or AI enthusiast, your contributions can make a significant impact.
+We welcome contributions from the community to help us maintain and expand the RadioTherapy Model Card Writing Tool. Whether you're a clinician, researcher, industry professional, or AI enthusiast, your contributions can make a significant impact.
 
 To get started, please review our [Contributing Guide](CONTRIBUTING.md) for guidelines and best practices.
 
-## Requirements
 ## Documentation
 
 - **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
@@ -56,3 +66,7 @@ We take the security of our platform seriously. Please review our [Security Guid
 ## License
 
 This project is licensed under the [Apache 2.0 License](LICENSE).
+
+---
+
+Developed and maintained by [Silvia María Herranz Hernández](https://github.com/silviaherranz)

@@ -38,7 +38,7 @@ Before contributing, please review:
 - Clone your fork to your local machine.
 
 ```bash
-git clone 
+git clone https://github.com/MIRO-UCLouvain/RT-Model-Card.git
 ```
 
 ### 2. Create a Branch
