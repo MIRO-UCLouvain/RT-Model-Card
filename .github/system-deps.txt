@@ -1,0 +1,12 @@
+libcairo2
+libpango-1.0-0
+libpangoft2-1.0-0
+libgdk-pixbuf-2.0-0
+libharfbuzz0b
+libglib2.0-0
+libffi7
+libjpeg62-turbo
+libpng16-16
+zlib1g
+shared-mime-info
+fonts-dejavu-core
