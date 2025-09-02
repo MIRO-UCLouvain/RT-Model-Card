@@ -9,7 +9,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15336016.svg)](https://doi.org/10.5281/zenodo.15336016)
 
 <p align="center">
-  <img src="docs/logo/title_logo/title_logo.png" alt="RadioTherapy AI Model Card Writing Tool logo" width="300">
+  <img src="docs/logo/title_logo/title_logo.png" alt="RadioTherapy AI Model Card Writing Tool logo" width="800">
 </p>
 
 **RadioTherapy AI Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
