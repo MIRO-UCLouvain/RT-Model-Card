@@ -64,7 +64,8 @@ rt-modelcards = "app.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["app*"]
+include = ["app*"] 
+
 
 [tool.setuptools.package-data]
 app = [
