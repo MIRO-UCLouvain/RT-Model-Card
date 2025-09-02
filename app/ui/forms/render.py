@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import html
 import re
+from collections.abc import Callable
 
 # Sequence is only required for type annotations.
 # Import it only while type-checking to avoid runtime cost.
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import (
     TYPE_CHECKING,
-    Callable,
     Literal,
     TypedDict,
 )
@@ -379,15 +379,15 @@ def _render_date_input(
             y = int(stored[0:4])
             m = int(stored[4:6])
             d = int(stored[6:DATE_STR_LEN])
-            widget_value = datetime(y, m, d, tzinfo=timezone.utc)
+            widget_value = datetime(y, m, d, tzinfo=UTC)
         except (ValueError, TypeError):
             widget_value = None
 
     st.date_input(
         "Click and select a date",
         value=widget_value,
-        min_value=datetime(1900, 1, 1, tzinfo=timezone.utc),
-        max_value=datetime.now(timezone.utc),
+        min_value=datetime(1900, 1, 1, tzinfo=UTC),
+        max_value=datetime.now(UTC),
         key="_" + full_key,
     )
 

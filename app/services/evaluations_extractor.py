@@ -15,7 +15,7 @@ from app.core.model_card.constants import (
 )
 
 if TYPE_CHECKING:
-    from collections.abc import Iterable
+    from collections.abc import Iterable, Mapping
 
 
 def extract_evaluations_from_state() -> list[dict[str, Any]]:  # noqa: C901, PLR0912
@@ -74,7 +74,9 @@ def extract_evaluations_from_state() -> list[dict[str, Any]]:  # noqa: C901, PLR
                 )
 
         modality_entries: list[dict[str, str]] = []
-        for key, value in st.session_state.items():
+        state = cast("Mapping[str, Any]", st.session_state)
+
+        for key, value in state.items():
             if key.endswith("model_inputs") and isinstance(value, list):
                 modality_entries.extend(
                     [

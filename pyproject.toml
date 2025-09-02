@@ -66,9 +66,12 @@ rt-modelcards = "app.cli:main"
 where = ["."]
 include = ["app*"] 
 
+
 [tool.setuptools.package-data]
-"app.core.templates.md" = ["*.md.j2"]
-"app.core.schemas" = ["*.json"]
+app = [
+  "core/templates/**/*.md.j2",
+  "core/schemas/*.json",
+]
 
 [tool.ruff]
 line-length = 79

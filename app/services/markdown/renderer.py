@@ -7,7 +7,7 @@ import logging
 import mimetypes
 import re
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from functools import lru_cache
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -137,7 +137,7 @@ def _format_date(
     if not raw:
         return None
     try:
-        dt = datetime.strptime(raw, in_fmt).replace(tzinfo=timezone.utc)
+        dt = datetime.strptime(raw, in_fmt).replace(tzinfo=UTC)
         return dt.strftime(out_fmt)
     except (ValueError, TypeError):
         return raw
