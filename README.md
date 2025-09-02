@@ -11,6 +11,7 @@
 <p align="center">
   <img src="docs/logo/title_logo/title_logo.svg" alt="RadioTherapy AI Model Card Writing Tool logo" width="900">
 </p>
+
 **RadioTherapy AI Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
 
 It is designed for use by professionals in both research and clinical settings, supporting reproducibility, accountability, and clear communication.  
