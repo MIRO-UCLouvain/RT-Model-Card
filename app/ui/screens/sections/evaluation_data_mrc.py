@@ -609,7 +609,7 @@ def _render_image_similarity_metrics_block(
         return
 
     tabs = st.tabs(ism_entries)
-    for tab, type_name in zip(tabs, ism_entries):
+    for tab, type_name in zip(tabs, ism_entries, strict=False):
         with tab:
             sub_prefix = f"{section_prefix}.{type_name}"
             task = st.session_state.get("task", "").strip().lower()
@@ -692,7 +692,7 @@ def _render_image_dose_metrics_block(  # noqa: C901, PLR0912
         return
 
     tabs = st.tabs([str(entry) for entry in dm_entries if entry])
-    for tab, dm_name in zip(tabs, dm_entries):
+    for tab, dm_name in zip(tabs, dm_entries, strict=False):
         with tab:
             sub_prefix = f"{section_prefix}.{dm_name}"
             if should_render(
@@ -807,7 +807,7 @@ def _render_segmentation_geometric_block(
         return
 
     tabs = st.tabs([str(entry) for entry in seg_entries if entry])
-    for tab, seg_name in zip(tabs, seg_entries):
+    for tab, seg_name in zip(tabs, seg_entries, strict=False):
         with tab:
             sub_prefix = f"{section_prefix}.{seg_name}"
             col1, col2 = st.columns([1, 1])
@@ -887,7 +887,7 @@ def _render_segmentation_dose_block(  # noqa: C901
         return
 
     tabs = st.tabs([str(entry) for entry in dm_seg_entries if entry])
-    for tab, seg_name in zip(tabs, dm_seg_entries):
+    for tab, seg_name in zip(tabs, dm_seg_entries, strict=False):
         with tab:
             sub_prefix = f"{section_prefix}.{seg_name}"
             if should_render(
@@ -1042,7 +1042,7 @@ def _render_dose_prediction_dose_block(
         return
 
     tabs = st.tabs([str(entry) for entry in dm_dp_entries if entry])
-    for tab, dp_name in zip(tabs, dm_dp_entries):
+    for tab, dp_name in zip(tabs, dm_dp_entries, strict=False):
         with tab:
             sub_prefix = f"{section_prefix}.{dp_name}"
             if should_render(
@@ -1109,7 +1109,7 @@ def _render_other_metrics(
     )
     if other_keys:
         tabs = st.tabs(other_keys)
-        for tab, name in zip(tabs, other_keys):
+        for tab, name in zip(tabs, other_keys, strict=False):
             with tab:
                 sub_prefix = f"{section_prefix}.{name}"
                 render_field(

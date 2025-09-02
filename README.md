@@ -1,6 +1,6 @@
-# RadioTherapy Model Card Writing Tool
+# RadioTherapy AI Model Card Writing Tool
 
-[![Website](https://img.shields.io/website?up_message=online&down_message=offline&url=https%3A%2F%2Frt-modelcard.streamlit.app)](https://rt-modelcard.streamlit.app)
+[![Website](https://img.shields.io/badge/website-online-brightgreen)](https://rt-modelcard.streamlit.app)
 [![GitHub Stars](https://img.shields.io/github/stars/MIRO-UCLouvain/RT-Model-Card?style=social)](https://github.com/MIRO-UCLouvain/RT-Model-Card/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/MIRO-UCLouvain/RT-Model-Card?style=social)](https://github.com/MIRO-UCLouvain/RT-Model-Card/network/members)
 [![GitHub Issues](https://img.shields.io/github/issues/MIRO-UCLouvain/RT-Model-Card)](https://github.com/MIRO-UCLouvain/RT-Model-Card/issues)
@@ -8,7 +8,11 @@
 [![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-2ea44f)](https://github.com/MIRO-UCLouvain/RT-Model-Card/blob/main/CODE_OF_CONDUCT.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15336016.svg)](https://doi.org/10.5281/zenodo.15336016)
 
-**RadioTherapy Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
+<p align="center">
+  <img src="docs/logo/title_logo/title_logo.png" alt="RadioTherapy AI Model Card Writing Tool logo" width="300">
+</p>
+
+**RadioTherapy AI Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
 
 It is designed for use by professionals in both research and clinical settings, supporting reproducibility, accountability, and clear communication.  
 
@@ -30,15 +34,13 @@ This project is open-source and welcomes contributions from the community to evo
 ---
 
 ## Features
-
-- **Open Access**: All content is freely accessible to promote transparency and collaboration.  
+ 
 - **Standardized Structure**: Model cards follow a consistent 6-section format, making them easy to compare and interpret.  
 - **Full Pipeline Transparency**: Provides details on the entire workflow, including pre-processing, learning architecture, and post-processing steps.  
 - **Task-Specific Adaptability**: When creating a new model card, users select from four tasks (Segmentation, Dose prediction, Image-to-image translation, or Other). Based on the chosen task, the card dynamically displays the relevant task-specific fields to be filled in.   
 - **Versioning Support**: Built-in fields allow tracking of updates to both the model and its documentation.  
-- **Evaluation & Commissioning**: Supports multiple evaluation forms for different datasets or clinical institutions, with clear distinction between research evaluation and clinical commissioning.  
-- **Supporting Materials Integration**: Attach or reference figures, tables, and appendices without cluttering the main document.  
-- **Digital Prototype Tool**: Online platform that guides users with recommendations, interactive fields, and structured workflows.  
+- **Evaluation & Commissioning**: Supports multiple evaluation forms for different datasets or clinical institutions.
+- **Supporting Materials Integration**: Attach or reference figures, tables, and appendices without cluttering the main document.    
 - **Flexible Export Options**: Download model cards in multiple formats (.json, .pdf, .md, .zip) for sharing and archival purposes.  
 - **Progress Tracking**: Built-in warning system highlights required fields that are missing or incomplete.  
 - **Community-Driven Development**: Encourages feedback, edits, and contributions from the Radiation Therapy and AI community.  
@@ -46,7 +48,7 @@ This project is open-source and welcomes contributions from the community to evo
 
 ## Contributing
 
-We welcome contributions from the community to help us maintain and expand the RadioTherapy Model Card Writing Tool. Whether you're a clinician, researcher, industry professional, or AI enthusiast, your contributions can make a significant impact.
+We welcome contributions from the community to help us maintain and expand the RadioTherapy AI Model Card Writing Tool. Whether you're a clinician, researcher, industry professional, or AI enthusiast, your contributions can make a significant impact.
 
 To get started, please review our [Contributing Guide](CONTRIBUTING.md) for guidelines and best practices.
 

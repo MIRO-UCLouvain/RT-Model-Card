@@ -1,7 +1,7 @@
 """Module for date validation and conversion utilities."""
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from typing import TypeGuard
 
 import streamlit as st
@@ -34,7 +34,7 @@ def to_date(s: str) -> date | None:
         # make the datetime timezone-aware (UTC) to avoid
         # naive-datetime construction,
         # then extract the date portion
-        tzinfo = timezone.utc
+        tzinfo = UTC
         return datetime.strptime(s, "%Y%m%d").replace(tzinfo=tzinfo).date()
     except (ValueError, TypeError):
         return None
