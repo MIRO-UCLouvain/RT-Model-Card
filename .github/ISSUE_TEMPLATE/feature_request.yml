@@ -1,0 +1,50 @@
+name: "Feature Request"
+description: Suggest a new feature, improvement, or addition for the RT Model Card Writing Tool
+title: "[Feature]: "
+labels: ["enhancement"]
+
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the feature
+      description: A clear and concise description of the feature or improvement you are suggesting.
+      placeholder: "As a user, I want to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose and Benefit
+      description: >
+        - Why is this feature needed?
+        - Who would benefit from it? (e.g., researchers, clinicians, students)
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Explain how you envision the feature working, or what changes you propose.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternatives or workarounds? Please describe.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Add any other context, references, or screenshots to support your idea.
+
+  - type: checkboxes
+    id: type
+    attributes:
+      label: Type of Feature
+      options:
+        - label: New page or section (e.g., new form, new template)
+        - label: Enhancement of existing functionality
+        - label: Website functionality improvement
+        - label: Other (please describe)
