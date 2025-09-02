@@ -7,8 +7,9 @@
 [![License](https://img.shields.io/github/license/MIRO-UCLouvain/RT-Model-Card)](https://github.com/MIRO-UCLouvain/RT-Model-Card/blob/main/LICENSE)
 [![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-2ea44f)](https://github.com/MIRO-UCLouvain/RT-Model-Card/blob/main/CODE_OF_CONDUCT.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15336016.svg)](https://doi.org/10.5281/zenodo.15336016)
+
 <p align="center">
-  <img src="docs/logo/title_logo/title_logo.png" alt="RadioTherapy AI Model Card Writing Tool logo" width="900">
+  <img src="docs/logo/title_logo/title_logo.svg" alt="RadioTherapy AI Model Card Writing Tool logo" width="900">
 </p>
 **RadioTherapy AI Model Card Writing Tool** is an open, community-driven tool to enhance transparency and standardize the reporting of artificial intelligence (AI) applications in Radiation Therapy.  
 
