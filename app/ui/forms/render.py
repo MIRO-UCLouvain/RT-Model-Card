@@ -15,8 +15,6 @@ from typing import (
     TypedDict,
 )
 
-from app.core.date_utils import is_yyyymmdd, to_date
-
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
@@ -341,6 +339,7 @@ def render_field(key: str, props: FieldProps, section_prefix: str) -> None:  # n
     # Fallback: text input
     _render_text_input(full_key, props)
 
+
 def _render_date_input(
     full_key: str,
     props: FieldProps,  # noqa: ARG001
@@ -348,51 +347,56 @@ def _render_date_input(
     key_name: str,  # noqa: ARG001
 ) -> None:
     """
-    Render a date input with a separate widget key to keep types safe.
+    Render a date input field.
 
     :param full_key: The full key of the field.
     :type full_key: str
     :param props: The properties of the field.
     :type props: FieldProps
-    :param key_name: The key name for the widget.
+    :param key_name: The key name for the field.
     :type key_name: str
     """
-    widget_key = f"{full_key}_widget"
+    widget_key = f"{full_key}_widget"       # holds `date` or None
+    raw_key = f"_{widget_key}"              # mirror for the widget
 
-    # Ensure the final storage slot exists but don't force a default date
-    if full_key not in st.session_state:
-        st.session_state[full_key] = None
-
-    # Derive the widget's initial value:
-    # - Prefer any pre-seeded widget date (from your loaders)
-    # - Else, convert stored YYYYMMDD to a `date`
-    # - Else, leave as None (no default)
+    # Prepare initial widget value:
+    # 1) If widget already exists, use it (user-edited value)
+    # 2) Else, convert any stored YYYYMMDD string to a `date`
+    # 3) Else, keep None (no default)
     initial_widget_date: date | None = st.session_state.get(widget_key)
     if initial_widget_date is None:
         stored = st.session_state.get(full_key)
-        if is_yyyymmdd(stored):
-            parsed = to_date(stored)  # returns date|None
-            if parsed:
-                initial_widget_date = parsed
+        if (
+            isinstance(stored, str)
+            and len(stored) == DATE_STR_LEN
+            and stored.isdigit()
+        ):
+            try:
+                y, m, d = int(stored[:4]), int(stored[4:6]), int(stored[6:8])
+                initial_widget_date = date(y, m, d)
+            except ValueError:
+                initial_widget_date = None
 
-    # Only write the initial value if the widget key isn't present
-    if widget_key not in st.session_state:
-        st.session_state[widget_key] = initial_widget_date
+    # Ensure widget_key exists with the correct initial value,
+    # and mirror it to the raw_key so Streamlit's widget reads it.
+    load_value(widget_key, default=initial_widget_date)
 
-    # Render the widget with a true `date` (or None) — never a string
-    picked: date | None = st.date_input(
+    # Render the widget; on_change will copy from raw_key -> widget_key
+    st.date_input(
         "Click and select a date",
         value=st.session_state.get(widget_key, None),
         min_value=date(1900, 1, 1),
         max_value=datetime.now(UTC).date(),
-        key=widget_key,
+        key=raw_key,
+        on_change=store_value,
+        args=(widget_key,),
     )
 
-    # Persist selection (YYYYMMDD) or None. No warnings.
-    if picked:
-        st.session_state[full_key] = picked.strftime("%Y%m%d")
-    else:
-        st.session_state[full_key] = None
+    # Persist as 'YYYYMMDD' or None. No inline warnings here.
+    user_date: date | None = st.session_state.get(widget_key)
+    st.session_state[full_key] = (
+        user_date.strftime("%Y%m%d") if user_date else None
+    )
 
 def _render_version_number(full_key: str) -> None:
     """
