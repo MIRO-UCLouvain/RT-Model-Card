@@ -8,12 +8,14 @@ from collections.abc import Callable
 
 # Sequence is only required for type annotations.
 # Import it only while type-checking to avoid runtime cost.
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import (
     TYPE_CHECKING,
     Literal,
     TypedDict,
 )
+
+from app.core.date_utils import is_yyyymmdd, to_date
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
@@ -339,74 +341,58 @@ def render_field(key: str, props: FieldProps, section_prefix: str) -> None:  # n
     # Fallback: text input
     _render_text_input(full_key, props)
 
-
 def _render_date_input(
     full_key: str,
-    props: FieldProps,
+    props: FieldProps,  # noqa: ARG001
     *,
-    key_name: str,
+    key_name: str,  # noqa: ARG001
 ) -> None:
     """
-    Render a date input while preserving intermediate widget state and storing
-    the final value as a YYYYMMDD string.
+    Render a date input with a separate widget key to keep types safe.
 
-    - Final stored key: full_key (stores 'YYYYMMDD' or None)
-    - Widget key: "_" + full_key (stores a date/datetime object)
-
-    :param full_key: The full key for the field.
+    :param full_key: The full key of the field.
     :type full_key: str
-    :param props: The field properties.
-    :type props: dict
-    :param key_name: The field key name (used for error messages).
+    :param props: The properties of the field.
+    :type props: FieldProps
+    :param key_name: The key name for the widget.
     :type key_name: str
-    """  # noqa: D205
-    # Load any persisted value for this field into session state
-    load_value(full_key)
-    # Ensure the 'final' key exists (None => no actual value)
+    """
+    widget_key = f"{full_key}_widget"
+
+    # Ensure the final storage slot exists but don't force a default date
     if full_key not in st.session_state:
         st.session_state[full_key] = None
 
-    stored = st.session_state.get(full_key)
-    widget_value = None
-    if hasattr(stored, "strftime"):
-        widget_value = stored
-    elif (
-        isinstance(stored, str)
-        and len(stored) == DATE_STR_LEN
-        and stored.isdigit()
-    ):
-        try:
-            y = int(stored[0:4])
-            m = int(stored[4:6])
-            d = int(stored[6:DATE_STR_LEN])
-            widget_value = datetime(y, m, d, tzinfo=UTC)
-        except (ValueError, TypeError):
-            widget_value = None
+    # Derive the widget's initial value:
+    # - Prefer any pre-seeded widget date (from your loaders)
+    # - Else, convert stored YYYYMMDD to a `date`
+    # - Else, leave as None (no default)
+    initial_widget_date: date | None = st.session_state.get(widget_key)
+    if initial_widget_date is None:
+        stored = st.session_state.get(full_key)
+        if is_yyyymmdd(stored):
+            parsed = to_date(stored)  # returns date|None
+            if parsed:
+                initial_widget_date = parsed
 
-    st.date_input(
+    # Only write the initial value if the widget key isn't present
+    if widget_key not in st.session_state:
+        st.session_state[widget_key] = initial_widget_date
+
+    # Render the widget with a true `date` (or None) — never a string
+    picked: date | None = st.date_input(
         "Click and select a date",
-        value=widget_value,
-        min_value=datetime(1900, 1, 1, tzinfo=UTC),
-        max_value=datetime.now(UTC),
-        key="_" + full_key,
+        value=st.session_state.get(widget_key, None),
+        min_value=date(1900, 1, 1),
+        max_value=datetime.now(UTC).date(),
+        key=widget_key,
     )
 
-    required = bool(props.get("required", False))
-    user_date = st.session_state.get("_" + full_key)
-
-    if user_date:
-        st.session_state[full_key] = user_date.strftime("%Y%m%d")
-    elif required and user_date is not None:
-        st.session_state[full_key] = None
-        if key_name == "evaluation_date":
-            st.error(
-                "Date of evaluation is required. Please select a valid date.",
-            )
-        else:
-            st.error("Creation date is required. Please select a valid date.")
+    # Persist selection (YYYYMMDD) or None. No warnings.
+    if picked:
+        st.session_state[full_key] = picked.strftime("%Y%m%d")
     else:
         st.session_state[full_key] = None
-
 
 def _render_version_number(full_key: str) -> None:
     """
